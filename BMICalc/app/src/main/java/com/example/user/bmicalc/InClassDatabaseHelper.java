@@ -33,6 +33,20 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
                 + "HEALTH_CARD_NUMB TEXT,"
                 + "DATE INTEGER);");
 
+        db.execSQL("CREATE TABLE " + TABLE_NAME_BMI + "("
+                + "WEIGHT DOUBLE,"
+                + "HEIGHT DOUBLE,"
+                + "BMI DOUBLE,"
+                + "DATE TEXT);");
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+
+    public void InsertUser()
+    {
+        SQLiteDatabase db= this.getWritableDatabase();
         Date today = new Date();
         ContentValues personValues = new ContentValues();
         personValues.put("NAME", "Preeti Padelkar");
@@ -41,21 +55,11 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
         personValues.put("DATE", today.getTime());
 
         db.insert(TABLE_NAME, null, personValues);
-
     }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
     public void InsertData(double weight , double height , double bmi)
     {
         SQLiteDatabase db= this.getWritableDatabase();
-
-        db.execSQL("CREATE TABLE " + TABLE_NAME_BMI + "("
-                + "WEIGHT DOUBLE,"
-                + "HEIGHT DOUBLE,"
-                + "BMI DOUBLE,"
-                + "DATE TEXT);");
 
         Date today = new Date();
 

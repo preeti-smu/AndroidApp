@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class BMIListActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ListView listBMIResults = getListView();
-
+       // listBMIResults = (ListView) findViewById( R.id.mainListView );
         InClassDatabaseHelper helper = new InClassDatabaseHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
 
@@ -34,10 +35,14 @@ public class BMIListActivity extends ListActivity {
         if(cursor.moveToFirst())
 
         {
-            String weight = cursor.getString(0);
-            String height = cursor.getString(1);
-            String bmi = cursor.getString(2);
-            String date_value = cursor.getString(3);
+            do {
+                Double weight = Double.parseDouble(cursor.getString(0));
+                Double height = Double.parseDouble(cursor.getString(1));
+                Double bmi = Double.parseDouble(cursor.getString(2));
+                String date_value = cursor.getString(3);
+                results.add(new BMIResult(weight,height,bmi,date_value));
+            }
+            while (cursor.moveToNext());
 
         }
 
@@ -56,5 +61,8 @@ public class BMIListActivity extends ListActivity {
     public void onListItemClick(ListView listView, View itemView, int position, long id)
     {
         //System.out.println("Clicked on "+ results[position].toString());
+        String selectedValue = (String) getListAdapter().getItem(position);
+        Toast.makeText(this, selectedValue, Toast.LENGTH_SHORT).show();
+
     }
     }

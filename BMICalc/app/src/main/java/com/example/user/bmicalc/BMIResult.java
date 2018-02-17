@@ -7,11 +7,14 @@ package com.example.user.bmicalc;
 public class BMIResult {
     private double height = 1;
     private double weight = 1;
+    private double bmi = 1;
+    private String date_value = "";
 
-
-    public BMIResult(double height, double weight) {
+    public BMIResult(double height, double weight , double bmi, String date) {
         this.height = height;
         this.weight = weight;
+        this.bmi = bmi;
+        this.date_value = date;
     }
 
     public double getHeight() {
