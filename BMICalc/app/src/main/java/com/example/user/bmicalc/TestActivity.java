@@ -1,5 +1,7 @@
 package com.example.user.bmicalc;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,14 +13,21 @@ public class TestActivity extends AppCompatActivity {
     EditText weight_val;
     EditText height_val;
     TextView tv4;
+    TextView tv5;
+    InClassDatabaseHelper helper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
+        helper  = new InClassDatabaseHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
         weight_val = (EditText) findViewById(R.id.wgt);
         height_val  = (EditText) findViewById(R.id.hgt);
         tv4  = (TextView) findViewById(R.id.tv4);
+
     }
 
 
@@ -28,24 +37,33 @@ public class TestActivity extends AppCompatActivity {
         String weight1 = weight_val.getText().toString();
         String height1 = height_val.getText().toString();
 
-        float weight = Float.parseFloat(weight1);
-        float height = Float.parseFloat(height1)/100;
+        double weight = Double.parseDouble(weight1);
+        double height = Double.parseDouble(height1)/100;
 
         //Calculate BMI value
-        float bmiValue = calculateBMI(weight, height);
+        double bmiValue = calculateBMI(weight, height);
 
         //Define the meaning of the bmi value
         String bmiInterpretation = interpretBMI(bmiValue);
 
         tv4.setText(String.valueOf(bmiValue + "-" + bmiInterpretation));
+
+        helper.InsertData(weight,height,bmiValue);
     }
 
-    private float calculateBMI (float weight, float height) {
-        return (float) (weight / (height * height));
+    public void onClickEventList(View view)
+    {
+
+        Intent intent = new Intent(this, BMIListActivity.class);
+        startActivity(intent);
+    }
+
+    private double calculateBMI (double weight, double height) {
+        return (double) (weight / (height * height));
     }
 
     // Interpret what BMI means
-    private String interpretBMI(float bmiValue) {
+    private String interpretBMI(double bmiValue) {
 
         if (bmiValue < 16) {
             return "Severely underweight";
@@ -62,4 +80,5 @@ public class TestActivity extends AppCompatActivity {
             return "Obese";
         }
     }
+
 }

@@ -1,6 +1,8 @@
 package com.example.user.bmicalc;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class bmicalc_main extends AppCompatActivity {
 
@@ -27,6 +31,35 @@ public class bmicalc_main extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        InClassDatabaseHelper helper = new InClassDatabaseHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        //run a cursor
+        Cursor cursor = db.query(InClassDatabaseHelper.TABLE_NAME, new String[]
+                        {"NAME", "PASSWORD", "DATE"},
+                null, null, null, null, null);
+
+        if(cursor.moveToFirst())
+
+        {
+            String name = cursor.getString(0);
+          //  String name = cursor.getString(0);
+            String card = cursor.getString(2);
+           // String password = cursor.getString(3);
+
+            TextView results_name;
+            results_name = findViewById(R.id.editText4);
+            results_name.setText(name);
+
+            TextView results_healthcard;
+            results_healthcard = findViewById(R.id.editText7);
+            results_healthcard.setText(card);
+
+        }
+
+        cursor.close();
+        db.close();
     }
 
     @Override
@@ -53,6 +86,8 @@ public class bmicalc_main extends AppCompatActivity {
 
     public void onClickEvent(View view)
     {
+
+
         Intent intent = new Intent(this, TestActivity.class);
         startActivity(intent);
     }

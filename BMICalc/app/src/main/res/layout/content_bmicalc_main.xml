@@ -15,29 +15,69 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:text="          Welcome to BMI Calculator"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name : "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
         <EditText
             android:id="@+id/editText4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="37dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <EditText
             android:id="@+id/editText6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date"
-            android:text="Date of Birth" />
+            android:inputType="textEmailAddress|date" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Health Card Number :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <EditText
             android:id="@+id/editText7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number"
-            android:text="Health Card Number" />
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="37dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password : "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <EditText
             android:id="@+id/editText8"
@@ -45,8 +85,11 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            android:text="Password" />
+            android:selectAllOnFocus="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/button2"
@@ -54,6 +97,12 @@
             android:layout_height="wrap_content"
             android:onClick="onClickEvent"
             android:text="Submit" />
+
+        <TextView
+            android:id="@+id/editTextresults"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     </LinearLayout>
 
