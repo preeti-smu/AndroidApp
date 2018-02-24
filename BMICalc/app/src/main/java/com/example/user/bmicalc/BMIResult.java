@@ -20,12 +20,17 @@ public class BMIResult {
     public double getHeight() {
         return height;
     }
-
     public void setHeight(double height) {this.height = height ;}
+
     public double getWeight(){
         return weight;
     }
     public void setWeight(double weight){this.height = weight;}
+
+    public String getDate(){
+        return date_value;
+    }
+    public void setDate_value(String date_value){this.date_value = date_value;}
 
     public double getResult(){
         return  weight/(height*height);

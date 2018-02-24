@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.EditText;
 import android.content.Context;
 import java.util.Date;
@@ -70,7 +71,7 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
         bmiValues.put("DATE",today.toString());
 
         db.insert(TABLE_NAME_BMI, null, bmiValues);
-        System.out.println("Records inserted successfully : "+ weight + "  "+ height +"  "+ bmi);
+        Log.d("Weight :",Double.toString(weight)+ " Height : " +Double.toString(height)+ " BMI in InClass  : " +Double.toString(bmi));
         return true;
     }
 
@@ -78,6 +79,7 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery("select * from "+ TABLE_NAME_BMI,null);
+        //Log.d("Hello : ",Double.toString(result.getCount()));
 
         return result;
     }
