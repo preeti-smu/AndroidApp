@@ -21,10 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestActivity" />
-        <activity
-            android:name=".BMIListActivity"
-            android:label="@string/title_activity_bmilist"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DataListLayoutActivity"></activity>
     </application>
 
 </manifest>

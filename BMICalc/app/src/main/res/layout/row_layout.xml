@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <TextView
+        android:textStyle="bold"
+        android:textColor="#010101"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:id="@+id/txt_weight"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Weight" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textColor="#010101"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:id="@+id/txt_height"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Height" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textColor="#010101"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:id="@+id/txt_bmi"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="BMI" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textColor="#010101"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:id="@+id/txt_date"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Date" />
+
+</LinearLayout>

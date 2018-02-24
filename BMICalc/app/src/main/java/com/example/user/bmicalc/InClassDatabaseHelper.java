@@ -57,7 +57,7 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, personValues);
     }
 
-    public void InsertData(double weight , double height , double bmi)
+    public boolean InsertData(double weight , double height , double bmi)
     {
         SQLiteDatabase db= this.getWritableDatabase();
 
@@ -70,6 +70,16 @@ public class InClassDatabaseHelper extends SQLiteOpenHelper {
         bmiValues.put("DATE",today.toString());
 
         db.insert(TABLE_NAME_BMI, null, bmiValues);
+        System.out.println("Records inserted successfully : "+ weight + "  "+ height +"  "+ bmi);
+        return true;
+    }
+
+    public Cursor getData()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery("select * from "+ TABLE_NAME_BMI,null);
+
+        return result;
     }
 
 }

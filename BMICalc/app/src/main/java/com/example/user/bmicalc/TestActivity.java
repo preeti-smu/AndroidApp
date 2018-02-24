@@ -54,7 +54,7 @@ public class TestActivity extends AppCompatActivity {
     public void onClickEventList(View view)
     {
 
-        Intent intent = new Intent(this, BMIListActivity.class);
+        Intent intent = new Intent(this, DataListLayoutActivity.class);
         startActivity(intent);
     }
 
