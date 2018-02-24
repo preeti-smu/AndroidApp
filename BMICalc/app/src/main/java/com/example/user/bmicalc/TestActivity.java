@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.text.InputFilter;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -16,7 +18,6 @@ public class TestActivity extends AppCompatActivity {
     EditText weight_val;
     EditText height_val;
     TextView tv4;
-    TextView tv5;
     InClassDatabaseHelper helper;
 
     @Override
@@ -31,6 +32,7 @@ public class TestActivity extends AppCompatActivity {
         height_val  = (EditText) findViewById(R.id.hgt);
         tv4  = (TextView) findViewById(R.id.tv4);
 
+        //height_val.setFilters(new InputFilter[]{ new InputFilterMinMax("120", "215")});
     }
 
 
@@ -40,20 +42,27 @@ public class TestActivity extends AppCompatActivity {
         String weight1 = weight_val.getText().toString();
         String height1 = height_val.getText().toString();
 
-        double weight = Double.parseDouble(weight1);
-        double height = Double.parseDouble(height1)/100;
+        if(height1.matches("") || weight1.matches(""))
+        {
+            Toast.makeText(this, "You did not enter all the details", Toast.LENGTH_SHORT).show();
+        }
+        else {
 
-        //Calculate BMI value
-        double bmiValue = calculateBMI(weight, height);
-        DecimalFormat df_2 = new DecimalFormat("0.00");
-        String bmi_value = df_2.format(bmiValue);
+            double weight = Double.parseDouble(weight1);
+            double height = Double.parseDouble(height1)/100;
 
-        //Define the meaning of the bmi value
-        String bmiInterpretation = interpretBMI(Double.parseDouble(bmi_value));
+            //Calculate BMI value
+            double bmiValue = calculateBMI(weight, height);
+            DecimalFormat df_2 = new DecimalFormat("0.00");
+            String bmi_value = df_2.format(bmiValue);
 
-        tv4.setText(String.valueOf(bmiValue + "-" + bmiInterpretation));
+            //Define the meaning of the bmi value
+            String bmiInterpretation = interpretBMI(Double.parseDouble(bmi_value));
 
-        helper.InsertData(weight,height,Double.parseDouble(bmi_value));
+            tv4.setText(String.valueOf(bmiValue + "-" + bmiInterpretation));
+
+           // helper.InsertData(weight, height, Double.parseDouble(bmi_value));
+        }
     }
 
     public void dataList(View view)

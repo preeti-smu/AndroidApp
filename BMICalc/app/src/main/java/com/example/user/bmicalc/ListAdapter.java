@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,13 +69,18 @@ public class ListAdapter extends ArrayAdapter{
         }
         BMIResult bmiResult = (BMIResult)this.getItem(position);
         Double wgt = bmiResult.getWeight();
-        layoutHandler.Weight.setText(Double.toString(wgt));
         Double hgt = bmiResult.getHeight();
-        layoutHandler.Height.setText(Double.toString(hgt));
+        layoutHandler.Weight.setText(Double.toString(hgt));
+
+        layoutHandler.Height.setText(Double.toString(wgt));
         Double bmi = bmiResult.getResult();
-        layoutHandler.BMI.setText(bmi.toString());
+
+        DecimalFormat df_2 = new DecimalFormat("0.00");
+        String bmi_value = df_2.format(bmi);
+
+        layoutHandler.BMI.setText(bmi_value);
         layoutHandler.Date_value.setText(bmiResult.getDate());
-        Log.d("Weight in listadapter:",Double.toString(wgt)+ " Height in listadapter : " +Double.toString(hgt)+ " BMI in listadapter : " +Double.toString(bmi));
+        //Log.d("Weight in listadapter:",Double.toString(hgt)+ " Height in listadapter : " +Double.toString(wgt)+ " BMI in listadapter : " +bmi_value);
         return row ;
     }
 }

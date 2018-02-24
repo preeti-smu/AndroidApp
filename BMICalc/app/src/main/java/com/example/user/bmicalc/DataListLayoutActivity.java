@@ -46,8 +46,8 @@ public class DataListLayoutActivity extends AppCompatActivity {
                 Date c = Calendar.getInstance().getTime();
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 String formattedDate = df.format(c);
-
-                BMIResult bmiResult = new BMIResult(weight ,height,Double.parseDouble(bmi_value),formattedDate.toString());
+                Double BMI = Double.parseDouble(bmi_value);
+                BMIResult bmiResult = new BMIResult(weight ,height,BMI,formattedDate.toString());
                 listAdapter.add(bmiResult);
                 Log.d("Weight :",Double.toString(weight)+ " Height : " +Double.toString(height)+ " BMI : " +Double.parseDouble(bmi_value));
             }

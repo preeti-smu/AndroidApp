@@ -33,7 +33,7 @@ public class BMIResult {
     public void setDate_value(String date_value){this.date_value = date_value;}
 
     public double getResult(){
-        return  weight/(height*height);
+        return  height/(weight*weight);
     }
 
     public String toString() {return String.valueOf(getResult());}
